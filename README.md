@@ -2,6 +2,12 @@
 
 A curated list of basic Bash scripting snippets and examples.
 
+**Bash Reference Manual**
+
+[https://www.gnu.org/software/bash/manual/html_node/index.html](https://www.gnu.org/software/bash/manual/html_node/index.html)
+
+------
+
 ### Default System Shell Shebang
 `#!/bin/sh`
 
