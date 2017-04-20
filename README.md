@@ -114,6 +114,8 @@ echo $str
 
 ### Script arguments
 
+Available via `$1`, `$2`, etc.
+
 ```
 echo "Hello, '$1 $2'"
 ```
