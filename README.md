@@ -149,8 +149,8 @@ read response
 if [ -n "$response" ]; then
  username=$response
 else
-	echo "Don't feel like talking, huh?"
-	exit 0
+ echo "Don't feel like talking, huh?"
+ exit 0
 fi
 
 echo "Do you like Apple gadgets, $username? (y/n)"
