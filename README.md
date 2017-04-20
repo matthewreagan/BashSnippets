@@ -163,6 +163,5 @@ printf "Follow up line will overwrite"
 
 ### Logarithmic values via bc
 `echo 'l(100)/l(10)' | bc -l`
-[http://stackoverflow.com/questions/7962283/how-do-i-calculate-the-log-of-a-number-using-bc](http://stackoverflow.com/questions/7962283/how-do-i-calculate-the-log-of-a-number-using-bc)
 
-## Flushing Stdout
+[http://stackoverflow.com/questions/7962283/how-do-i-calculate-the-log-of-a-number-using-bc](http://stackoverflow.com/questions/7962283/how-do-i-calculate-the-log-of-a-number-using-bc)
