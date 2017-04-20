@@ -17,6 +17,26 @@ y="2"
 echo "$(( $x * ( $y + 1 ) ))"
 ```
 
+### If-Then-Else Examples
+
+```
+a="1"
+b="2"
+
+if [ $a -lt $b ]; then
+	echo "$a is less than $b."
+else
+	echo "$a is greater than or equal to $b."
+fi
+
+if (( $a > $b ))
+then
+	echo "$a is greater than $b."
+else
+	echo "$a is less than or equal to $b."
+fi
+```
+
 ### Looping over a range
 ```
 for i in {1..5}; do echo $i; done
@@ -140,6 +160,20 @@ fi
 ### Current script path
 
 Available via `$0`
+
+### Exit status of most recent command
+
+Available via `$?`
+
+```
+cp /some/invalid/path another/invalid/path
+if [ $? -eq 0 ]
+then
+ echo "Copied successfully."
+else
+ echo "Error: non-zero exit code."
+fi
+```
 
 ### Reading input / Interactive mode
 
