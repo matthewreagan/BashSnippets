@@ -5,6 +5,16 @@ A curated list of basic Bash scripting snippets and examples.
 ### Default System Shell Shebang
 `#!/bin/sh`
 
+### Simple arithmetic
+
+Use `$(( ))`. See also: [https://bash.cyberciti.biz/guide/Perform_arithmetic_operations](https://bash.cyberciti.biz/guide/Perform_arithmetic_operations)
+
+```
+x="3"
+y="2"
+echo "$(( $x * ( $y + 1 ) ))"
+```
+
 ### Looping over a range
 ```
 for i in {1..5}; do echo $i; done
@@ -14,7 +24,6 @@ for i in {1..5}; do echo $i; done
 
 `basename "/My/path/to/file.txt"`
 Result: `file.txt`
-
 
 ### Extracting or removing file extension
 
