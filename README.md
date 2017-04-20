@@ -141,6 +141,27 @@ fi
 
 Available via `$0`
 
+### Reading input / Interactive mode
+
+```
+echo "Hi, what is your name?"
+read response
+if [ -n "$response" ]; then
+ username=$response
+else
+	echo "Don't feel like talking, huh?"
+	exit 0
+fi
+
+echo "Do you like Apple gadgets, $username? (y/n)"
+read response
+if [ "$response" != "y" ]; then
+ echo "That makes me sad."
+else
+ echo "Me too!"
+fi
+```
+
 ### Bash functions
 
 ```
