@@ -95,6 +95,33 @@ str+="!"
 echo $str
 ```
 
+### Script arguments
+
+```
+echo "Hello, '$1 $2'"
+```
+
+```
+./myScript.sh Bob Smith
+ Hello, 'Bob Smith'
+```
+
+### Checking argument count
+
+Available via `$#`
+
+```
+if [ $# -ne 2 ]
+then
+ echo "Expecting 2 arguments"
+ exit 1
+fi
+```
+
+### Current script path
+
+Available via `$0`
+
 ### Bash functions
 
 ```
