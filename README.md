@@ -15,6 +15,15 @@ for i in {1..5}; do echo $i; done
 `basename "/My/path/to/file.txt"`
 Result: `file.txt`
 
+
+### Extracting or removing file extension
+
+```
+file="Some/path/to/file.txt"
+echo "Extension: ${file##*.}"
+echo "Name sans extension: ${file%.*}"
+```
+
 ### Looping over pattern-matched files
 
 ```
@@ -59,11 +68,31 @@ fi
 ### While loop
 
 ```
+a=0
+b=5
+
 while (( $a < $b ))
 do
  echo $a
  a=$(( a + 1 ))
 done
+```
+
+### String concatenation
+
+```
+a="Hello"
+b="world"
+
+echo $a", "$b"!"
+echo "$a, $b!"
+echo "${a}, ${b}!"
+
+str=$a
+str+=", "
+str+=$b
+str+="!"
+echo $str
 ```
 
 ### Bash functions
@@ -75,6 +104,9 @@ sayHello() {
 
 sayHello
 ```
+
+### Directing command stdout and stderr to /dev/null
+`echo "silence" &> /dev/null`
 
 ### Bash functions with arguments
 
