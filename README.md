@@ -24,6 +24,12 @@ echo "Extension: ${file##*.}"
 echo "Name sans extension: ${file%.*}"
 ```
 
+Result:
+```
+Extension: txt
+Name sans extension: Some/path/to/file
+```
+
 ### Looping over pattern-matched files
 
 ```
