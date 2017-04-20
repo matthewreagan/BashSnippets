@@ -8,6 +8,8 @@ A curated list of basic Bash scripting snippets and examples.
 
 ------
 
+## General
+
 ### Default System Shell Shebang
 `#!/bin/sh`
 
@@ -22,6 +24,8 @@ x="3"
 y="2"
 echo "$(( $x * ( $y + 1 ) ))"
 ```
+
+## Logic & Control Flow
 
 ### If-Then-Else Examples
 
@@ -46,25 +50,6 @@ fi
 ### Looping over a range
 ```
 for i in {1..5}; do echo $i; done
-```
-
-### Last file path component
-
-`basename "/My/path/to/file.txt"`
-Result: `file.txt`
-
-### Extracting or removing file extension
-
-```
-file="Some/path/to/file.txt"
-echo "Extension: ${file##*.}"
-echo "Name sans extension: ${file%.*}"
-```
-
-Result:
-```
-Extension: txt
-Name sans extension: Some/path/to/file
 ```
 
 ### Looping over pattern-matched files
@@ -121,6 +106,39 @@ do
 done
 ```
 
+## Files & Paths
+
+### Last file path component
+
+`basename "/My/path/to/file.txt"`
+Result: `file.txt`
+
+### Extracting or removing file extension
+
+```
+file="Some/path/to/file.txt"
+echo "Extension: ${file##*.}"
+echo "Name sans extension: ${file%.*}"
+```
+
+Result:
+```
+Extension: txt
+Name sans extension: Some/path/to/file
+```
+
+### Finding files
+
+Basic matching by name:
+
+`find . -name "*.jpg"`
+
+Combining queries with `-and` / `-or`:
+
+`find . -name "*.swift" -or -name "*.m"`
+
+## Strings
+
 ### String concatenation
 
 ```
@@ -137,6 +155,58 @@ str+=$b
 str+="!"
 echo $str
 ```
+
+### String adjustments
+
+Components via **cut**
+
+```
+echo "Hello world and good day." | cut -d " " -f 1    #Result: Hello
+echo "Hello-world-and-good-day." | cut -d "-" -f 2    #Result: world
+```
+
+Character replacement
+
+```
+echo "Hello" | tr 'el' 'x'    #Result: Hxxxo
+echo "Hello" | tr 'el' 'ay'   #Result: Hayyo
+```
+
+
+Uppercasing / lowercasing
+
+```
+echo "Hello" | tr '[:lower:]' '[:upper:]'   #Result: HELLO
+echo "Hello" | tr '[:upper:]' '[:lower:]'   #Result: hello
+```
+
+
+Removing characters
+
+`echo "Hello" | tr -d "el"    #Result: Ho`
+
+
+Substituion via **sed**:
+
+`echo "The quick brown fox" | sed 's/brown/red/'    #Result: The quick red fox`
+
+_Note that sed, by default, matches once per line and is case sensitive:_
+
+`echo "Hello, hello, hello" | sed 's/hello/goodbye/'    #Result: Hello, goodbye, hello`
+
+
+Pattern-matched replacement:
+
+```
+echo "abc123def456" | sed -E 's/[a-z]*/First letters ==> & <== /'
+Result: First letters ==> abc <== 123def456
+```
+
+See also: [Sed Introduction and Tutorial](http://www.grymoire.com/Unix/Sed.html)
+
+See also: [RegEx Cheat Sheet](http://www.rexegg.com/regex-quickstart.html)
+
+## Script Arguments
 
 ### Script arguments
 
@@ -181,7 +251,9 @@ else
 fi
 ```
 
-### Reading input / Interactive mode
+## Interactive
+
+### Reading input
 
 ```
 echo "Hi, what is your name?"
@@ -202,6 +274,8 @@ else
 fi
 ```
 
+## Functions
+
 ### Bash functions
 
 ```
@@ -211,9 +285,6 @@ sayHello() {
 
 sayHello
 ```
-
-### Directing command stdout and stderr to /dev/null
-`echo "silence" &> /dev/null`
 
 ### Bash functions with arguments
 
@@ -252,6 +323,8 @@ result=$(echo $str | grep "b")
 echo $result
 ```
 
+## Printing & Stdout
+
 ### (Re)printing on the same line
 Use `\r`
 
@@ -267,6 +340,11 @@ sleep 1
 tput rc;tput el
 printf "Follow up line will overwrite"
 ```
+
+### Directing command stdout and stderr to /dev/null
+`echo "silence" &> /dev/null`
+
+## Math
 
 ### Logarithmic values via bc
 `echo 'l(100)/l(10)' | bc -l`
