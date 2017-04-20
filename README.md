@@ -57,6 +57,9 @@ for i in {1..5}; do echo $i; done
 ```
 for i in *.mp3; do echo $i; done
 ```
+```
+for i in `find . -name "*.JPG"`; do echo $i; done
+```
 
 ### Multi-line looping example
 
