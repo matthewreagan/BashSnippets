@@ -116,6 +116,11 @@ done
 `basename "/My/path/to/file.txt"`
 Result: `file.txt`
 
+### Parent directory
+
+`dirname "/My/path/to/file.txt"`
+Result: `/My/path/to`
+
 ### Extracting or removing file extension
 
 ```
