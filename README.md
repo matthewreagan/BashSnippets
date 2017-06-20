@@ -149,9 +149,11 @@ Combining queries with `-and` / `-or`:
 
 ### String comparison
 
+```
 if ["$1" == "hi"] then;
   echo "First arg is 'hi'!"
 fi
+```
 
 ### String concatenation
 
