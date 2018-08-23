@@ -153,6 +153,10 @@ Won't work if paths contain spaces etc.:
 
 Works:
 
+`find . -name "*.swift" | sed 's/ /\\ /g' |  xargs wc -l`
+
+Also works:
+
 `find . -name "*.swift" -print0 | xargs -0 wc -l`
 
 See also: [https://stackoverflow.com/questions/16758525/how-can-i-make-xargs-handle-filenames-that-contain-spaces](https://stackoverflow.com/questions/16758525/how-can-i-make-xargs-handle-filenames-that-contain-spaces)
