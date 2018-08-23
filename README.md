@@ -145,6 +145,18 @@ Combining queries with `-and` / `-or`:
 
 `find . -name "*.swift" -or -name "*.m"`
 
+### Finding files + coping with spaces for xargs
+
+Won't work if paths contain spaces etc.:
+
+~~`find . -name "*.swift" | xargs wc -l`~~ 
+
+Works:
+
+`find . -name "*.swift" -print0 | xargs -0 wc -l`
+
+See also: [https://stackoverflow.com/questions/16758525/how-can-i-make-xargs-handle-filenames-that-contain-spaces](https://stackoverflow.com/questions/16758525/how-can-i-make-xargs-handle-filenames-that-contain-spaces)
+
 ## Strings
 
 ### String comparison
