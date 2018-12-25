@@ -238,6 +238,116 @@ See also: [Sed Introduction and Tutorial](http://www.grymoire.com/Unix/Sed.html)
 
 See also: [RegEx Cheat Sheet](http://www.rexegg.com/regex-quickstart.html)
 
+### Pattern Matching / RegEx 
+
+**Example file**:
+```
+<HTML>
+	<HEAD>
+		<script>
+			myFunc1('one');
+			myFunc2('two');
+			myFunc3('three');myFunc4('four');
+		</script>
+	</HEAD>
+	The quick brown fox jumped over the lazy IBM.
+</HTML>
+```
+
+---
+
+**Command**:
+`grep myFunc`
+
+**Output**:
+```
+			myFunc1('one');
+			myFunc2('two');
+			myFunc3('three');myFunc4('four');
+```   
+
+**Command**:
+`grep myFunc -o`
+
+**Output**:
+```
+myFunc
+myFunc
+myFunc
+myFunc
+```   
+
+**Command**:
+`grep -E myFunc.* -o`
+
+**Output**:
+```
+myFunc1('one');
+myFunc2('two');
+myFunc3('three');myFunc4('four');
+```
+
+**Command**:
+`sed -n "s|.*myFunc1('\(.*\)');.*|\1|p"`
+
+**Output**:
+```
+one
+```
+
+*Discussion:* The `-n` option supresses / silences sed's default output of every line. The `p` flag in the regex prints just the text which was substituted. The `\1` substitution specifies the first matching group from the pattern. The group is the text contained within the set of escaped parentheses `\(` & `\)`. So this regex matches the entirety of any line which contains `myFunct('…')`, and prints out just the matching group value.
+
+
+
+**Command**:
+`sed -n "s|.*\(myFunc[0-9]\)('\(.*\)');.*|\1 === \2|p"`
+
+**Output**:
+```
+myFunc1 === one
+myFunc2 === two
+myFunc4 === four
+```
+
+*Discussion:* Builds on previous example by matching any `myFunc[N]`, and including that first match in a group. The output is changed to `\1 === \2` to print both groups.
+
+*Note on greedy matching*: POSIX regex doesn't support lazy / non-greedy captures (`.*?`), which is why `myFunc3` is omitted (the `.*` captures it as part of the match).
+
+**Command**:
+`sed "s|myFunc|theirFunc|"`
+
+**Output**:
+```
+<HTML>
+	<HEAD>
+		<script>
+			theirFunc1('one');
+			theirFunc2('two');
+			theirFunc3('three');myFunc4('four');
+		</script>
+	</HEAD>
+	The quick brown fox jumped over the lazy IBM.
+</HTML>
+```
+
+**Command**:
+`sed "s|myFunc|theirFunc|g"`
+
+**Output**:
+```
+<HTML>
+	<HEAD>
+		<script>
+			theirFunc1('one');
+			theirFunc2('two');
+			theirFunc3('three');theirFunc4('four');
+		</script>
+	</HEAD>
+	The quick brown fox jumped over the lazy IBM.
+</HTML>
+```
+
+
 ## Script Arguments
 
 ### Script arguments
