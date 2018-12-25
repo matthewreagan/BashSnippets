@@ -287,6 +287,8 @@ myFunc2('two');
 myFunc3('three');myFunc4('four');
 ```
 
+*Discussion:* Note the greedy matching of myFunc3 + myFunc4, this is discussed further below.
+
 **Command**:
 `sed -n "s|.*myFunc1('\(.*\)');.*|\1|p"`
 
@@ -296,7 +298,6 @@ one
 ```
 
 *Discussion:* The `-n` option supresses / silences sed's default output of every line. The `p` flag in the regex prints just the text which was substituted. The `\1` substitution specifies the first matching group from the pattern. The group is the text contained within the set of escaped parentheses `\(` & `\)`. So this regex matches the entirety of any line which contains `myFunct('…')`, and prints out just the matching group value.
-
 
 
 **Command**:
@@ -311,7 +312,33 @@ myFunc4 === four
 
 *Discussion:* Builds on previous example by matching any `myFunc[N]`, and including that first match in a group. The output is changed to `\1 === \2` to print both groups.
 
-*Note on greedy matching*: POSIX regex doesn't support lazy / non-greedy captures (`.*?`), which is why `myFunc3` is omitted (the `.*` captures it as part of the match).
+*Note on greedy matching*: POSIX regex doesn't support lazy / non-greedy captures (`.*?`), which is why `myFunc3` is omitted (the `.*` captures it as part of the match). See below.
+
+**Command**:
+`grep -oE "myFunc[0-9]\('.*?'\);"`
+
+**Output**:
+```
+myFunc1('one');
+myFunc2('two');
+myFunc3('three');
+myFunc4('four');
+```
+
+*Discussion*: We make use of a lazy / non-greedy capture here (`.*?`, instead of `.*`) with `grep` to match against `myFunc3` and `myFunc4` separately. The `-o` flag prints 'only' the match, and the `-E` specifies we're using an expression. Note that unlike `sed`, the parentheses must be escaped when we're attempting to match them explicitly (as opposed to escaping them to _avoid_ matching them.)
+
+**Command**:
+`grep -oE "myFunc[0-9]\('.*?'\);" | sed -n "s|\(myFunc[0-9]\)('\(.*\)');|\1 === \2|p"`
+
+**Output**:
+```
+myFunc1 === one
+myFunc2 === two
+myFunc3 === three
+myFunc4 === four
+```
+
+*Discussion*: Contrived example, but shows to fix the greedy matching in `sed` by first matching with the `grep` example further up. This gives us a exhaustive match across each line.
 
 **Command**:
 `sed "s|myFunc|theirFunc|"`
