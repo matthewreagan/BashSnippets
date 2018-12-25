@@ -338,7 +338,7 @@ myFunc3 === three
 myFunc4 === four
 ```
 
-*Discussion*: Contrived example, but shows to fix the greedy matching in `sed` by first matching with the `grep` example further up. This gives us a exhaustive match across each line.
+*Discussion*: Contrived example, fixes the greedy matching in `sed` by first matching with the non-greedy `grep` example further up. This gives us a exhaustive match across each line.
 
 **Command**:
 `sed "s|myFunc|theirFunc|"`
