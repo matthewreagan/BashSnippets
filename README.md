@@ -240,7 +240,7 @@ See also: [RegEx Cheat Sheet](http://www.rexegg.com/regex-quickstart.html)
 
 ### Pattern Matching / RegEx 
 
-**Example file**:
+**Input text**:
 ```
 <HTML>
 	<HEAD>
