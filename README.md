@@ -297,7 +297,7 @@ myFunc3('three');myFunc4('four');
 one
 ```
 
-*Discussion:* The `-n` option supresses / silences sed's default output of every line. The `p` flag in the regex prints just the text which was substituted. The `\1` substitution specifies the first matching group from the pattern. The group is the text contained within the set of escaped parentheses `\(` & `\)`. So this regex matches the entirety of any line which contains `myFunct('…')`, and prints out just the matching group value.
+*Discussion:* The `-n` option supresses / silences sed's default output of every line. The `p` flag in the regex prints just the text which was substituted. The `\1` substitution specifies the first matching group from the pattern. The group is the text contained within the set of escaped parentheses `\(` & `\)`. So this regex matches the entirety of any line which contains `myFunc('…')`, and prints out just the matching group value.
 
 
 **Command**:
