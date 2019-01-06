@@ -4,26 +4,17 @@ A curated list of basic Bash scripting snippets and examples. See also: [Bash Re
 
 ### Contents
 
-[Simple Arithmetic](#simple-arithmetic)
-
-[Logic & Control Flow](#logic-control-flow)
-
-[Files & Paths](#files-paths)
-
-[Strings](#strings)
-[Pattern Matching / Regex](#pattern-matching-regex)
-
-[Script Arguments](#script-arguments)
-
-[Interactive console](#interactive)
-
-[Functions](#functions)
-
-[Printing & Stdout](#printing-stdout)
-
-[Math](#math)
-
-[HTTP / Network](#http-network)
+- [Simple Arithmetic](#simple-arithmetic)
+- [Logic & Control Flow](#logic-control-flow)
+- [Files & Paths](#files-paths)
+- [Strings](#strings)
+- [Pattern Matching / Regex](#pattern-matching-regex)
+- [Script Arguments](#script-arguments)
+- [Interactive console](#interactive)
+- [Functions](#functions)
+- [Printing & Stdout](#printing-stdout)
+- [Math](#math)
+- [HTTP / Network](#http-network)
 
 ------
 
