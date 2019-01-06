@@ -25,7 +25,7 @@ A curated list of basic Bash scripting snippets and examples. See also: [Bash Re
 
 (See also: [http://stackoverflow.com/questions/10376206/what-is-the-preferred-bash-shebang](http://stackoverflow.com/questions/10376206/what-is-the-preferred-bash-shebang))
 
-### Simple arithmetic
+## Simple arithmetic
 
 Use `$(( ))`. See also: [https://bash.cyberciti.biz/guide/Perform_arithmetic_operations](https://bash.cyberciti.biz/guide/Perform_arithmetic_operations)
 
