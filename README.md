@@ -1,10 +1,29 @@
 # Bash Snippets
 
-A curated list of basic Bash scripting snippets and examples.
+A curated list of basic Bash scripting snippets and examples. See also: [Bash Reference Manual](https://www.gnu.org/software/bash/manual/html_node/index.html)
 
-**Bash Reference Manual**
+### Contents
 
-[https://www.gnu.org/software/bash/manual/html_node/index.html](https://www.gnu.org/software/bash/manual/html_node/index.html)
+[Simple Arithmetic](#simple-arithmetic)
+
+[Logic & Control Flow](#logic-control-flow)
+
+[Files & Paths](#files-paths)
+
+[Strings](#strings)
+[Pattern Matching / Regex](#pattern-matching-regex)
+
+[Script Arguments](#script-arguments)
+
+[Interactive console](#interactive)
+
+[Functions](#functions)
+
+[Printing & Stdout](#printing-stdout)
+
+[Math](#math)
+
+[HTTP / Network](#http-network)
 
 ------
 
@@ -25,7 +44,7 @@ y="2"
 echo "$(( $x * ( $y + 1 ) ))"
 ```
 
-## Logic & Control Flow
+## Logic, Control Flow
 
 ### If-Then-Else Examples
 
@@ -109,7 +128,7 @@ do
 done
 ```
 
-## Files & Paths
+## Files, Paths
 
 ### Last file path component
 
@@ -238,7 +257,7 @@ See also: [Sed Introduction and Tutorial](http://www.grymoire.com/Unix/Sed.html)
 
 See also: [RegEx Cheat Sheet](http://www.rexegg.com/regex-quickstart.html)
 
-### Pattern Matching / RegEx 
+## Pattern Matching, RegEx 
 
 **Input text**:
 ```
@@ -492,7 +511,7 @@ result=$(echo $str | grep "b")
 echo $result
 ```
 
-## Printing & Stdout
+## Printing, Stdout
 
 ### (Re)printing on the same line
 Use `\r`
@@ -519,3 +538,21 @@ printf "Follow up line will overwrite"
 `echo 'l(100)/l(10)' | bc -l`
 
 [http://stackoverflow.com/questions/7962283/how-do-i-calculate-the-log-of-a-number-using-bc](http://stackoverflow.com/questions/7962283/how-do-i-calculate-the-log-of-a-number-using-bc)
+
+## HTTP, Network
+
+### Pretty JSON
+To pretty-format JSON, pipe it into `python` using _json.tool_. Example:
+
+`cat myJSONFile.json | python -m json.tool`
+
+### curl
+`curl` is the go-to utility for testing network endpoints, server responses, crafting forms, submitting POST requests, downloading files, and more: [curl Manual](https://curl.haxx.se/docs/manual.html) | [curl Cheatsheet](https://devhints.io/curl)
+
+### Testing time-to-first-byte
+`curl -w "Connect time: %{time_connect} Time to first byte: %{time_starttransfer} Total: %{time_total} \n" "http://example.com/1/endpoint" -s -o /dev/null`
+
+See also: [Related article](http://sound-of-silence.com/?page=blog&article=20160404)
+
+### Download files using glob pattern
+`curl "http://somewebsite.com/files[0001-0010].txt" -o "file_#1.txt"`
