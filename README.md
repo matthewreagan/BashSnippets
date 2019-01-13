@@ -7,6 +7,7 @@ A curated list of basic Bash scripting snippets and examples. See also: [Bash Re
 - [Simple Arithmetic](#simple-arithmetic)
 - [Logic & Control Flow](#logic-control-flow)
 - [Files & Paths](#files-paths)
+- [Image Files](#image-files)
 - [Strings](#strings)
 - [Pattern Matching / Regex](#pattern-matching-regex)
 - [Script Arguments](#script-arguments)
@@ -131,18 +132,20 @@ Result: `file.txt`
 `dirname "/My/path/to/file.txt"`
 Result: `/My/path/to`
 
-### Extracting or removing file extension
+### Extracting, removing, or replacing file extension
 
 ```
 file="Some/path/to/file.txt"
 echo "Extension: ${file##*.}"
 echo "Name sans extension: ${file%.*}"
+echo "New extension: ${file%txt}gif"
 ```
 
 Result:
 ```
 Extension: txt
 Name sans extension: Some/path/to/file
+New extension: Some/path/to/file.gif
 ```
 
 ### Finding files
@@ -170,6 +173,14 @@ Also works:
 `find . -name "*.swift" -print0 | xargs -0 wc -l`
 
 See also: [https://stackoverflow.com/questions/16758525/how-can-i-make-xargs-handle-filenames-that-contain-spaces](https://stackoverflow.com/questions/16758525/how-can-i-make-xargs-handle-filenames-that-contain-spaces)
+
+## Image Files
+
+### Batch-converting images with `sips`
+
+```
+for i in `find . -name "IMG_04*.HEIC"`; do sips -s format jpeg -s formatOptions 70 "${i}" --out "${i%HEIC}JPG"; done
+```
 
 ## Strings
 
