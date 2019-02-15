@@ -13,6 +13,7 @@ A curated list of basic Bash scripting snippets and examples. See also: [Bash Re
 - [Script Arguments](#script-arguments)
 - [Interactive console](#interactive)
 - [Functions](#functions)
+- [Piping & Command Substitution](#piping-command-substitution)
 - [Printing & Stdout](#printing-stdout)
 - [Math](#math)
 - [HTTP / Network](#http-network)
@@ -497,6 +498,8 @@ result=$(giveMeAString)
 echo $result
 ```
 
+## Piping, Command Substitution
+
 ### Capturing output of another shell command
 
 Backticks:
@@ -512,6 +515,10 @@ str="a\nb\nc"
 result=$(echo $str | grep "b")
 echo $result
 ```
+
+Piping one value to multiple commands
+
+`echo "Hi"| tee >(xargs echo) >(xargs echo) | xargs echo`
 
 ## Printing, Stdout
 
