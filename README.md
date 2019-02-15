@@ -520,6 +520,8 @@ Piping one value to multiple commands
 
 `echo "Hi"| tee >(xargs echo) >(xargs echo) | xargs echo`
 
+_Note: This trick is not compatible with some shells / environments. See also: [this post](https://unix.stackexchange.com/questions/28503/how-can-i-send-stdout-to-multiple-commands)._
+
 ## Printing, Stdout
 
 ### (Re)printing on the same line
