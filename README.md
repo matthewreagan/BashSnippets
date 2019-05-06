@@ -17,6 +17,7 @@ A curated list of basic Bash scripting snippets and examples. See also: [Bash Re
 - [Printing & Stdout](#printing-stdout)
 - [Math](#math)
 - [HTTP / Network](#http-network)
+- [Compression](#compression)
 
 ------
 
@@ -567,3 +568,15 @@ See also: [Related article](http://sound-of-silence.com/?page=blog&article=20160
 
 ### Download files using glob pattern
 `curl "http://somewebsite.com/files[0001-0010].txt" -o "file_#1.txt"`
+
+## Compression
+
+### Password-protected ZIP archives
+
+The `-r` flag provides recursion (zipping a folder). The password for the encryption by default will be entered at a prompt after the command is run.
+
+`zip -er myArchive.zip FolderName`
+
+### Decompress Zip
+
+`unzip myArchive.zip`
