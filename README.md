@@ -18,6 +18,7 @@ A curated list of basic Bash scripting snippets and examples. See also: [Bash Re
 - [Math](#math)
 - [HTTP / Network](#http-network)
 - [Compression](#compression)
+- [git](#git)
 
 ------
 
@@ -571,12 +572,39 @@ See also: [Related article](http://sound-of-silence.com/?page=blog&article=20160
 
 ## Compression
 
-### Password-protected ZIP archives
-
-The `-r` flag provides recursion (zipping a folder). The password for the encryption by default will be entered at a prompt after the command is run.
+### Create password-protected ZIP archive
 
 `zip -er myArchive.zip FolderName`
+
+The `-r` flag provides recursion (zipping a folder). The password for the encryption by default will be entered at a prompt after the command is run.
 
 ### Decompress Zip
 
 `unzip myArchive.zip`
+
+## git
+
+### Find & checkout branch by partial name
+
+Sample script snippet. Also demonstrates use of terminal colors etc.
+
+```
+#!/bin/sh
+green='\033[0;35m'
+nocolor='\033[0m'
+branch=`git branch | grep $1 -m 1`
+
+if [ "$branch" = "" ]; then
+	echo "No branch found containing '$1'."
+	exit 0
+fi
+
+echo "Check out: ${green}$branch${nocolor}"
+echo "(y/n)"
+read response
+if [ "$response" != "y" ]; then
+	echo "Aborted."
+else
+	git checkout $branch
+fi
+```
