@@ -264,6 +264,48 @@ See also: [RegEx Cheat Sheet](http://www.rexegg.com/regex-quickstart.html)
 
 ## Pattern Matching, RegEx 
 
+Below are several pattern matching examples which build progressively upon each other. Before this, however, the below `sed` syntax deserves a special mention due to its versatility. By far the most common pattern matching task I encounter is to match a pattern and extract a portion. There are a variety of ways to do this, however the `sed` command below is quite handy:
+
+`sed -n "s| <regex> \( <regex> \) |\1|p"`
+
+The above command can be used to match any pattern and extract some or all of the text as the output.
+
+- The `-n` flag suppresses sed's default behavior to print every input line
+- The `s` flag indicates a substitution operation
+- The first block of text is the pattern to match, and we also specify a capture group via the escaped parantheses `\(` and `\)`
+- The `p` flag instructs sed to print only the text which is substituted
+- The `\1` for the substitution will match the text in our capture group (the parentheses)
+
+**Examples**:
+
+`echo "The quick brown fox jumps over the lazy dog." | sed -n "s|.*the \(.*\) dog.*|\1|p"`
+
+Result: `lazy`
+
+Comment: note the `.*` at the very beginning and end of the pattern, which captures all of text before or after the matched portion. This ensures that nothing except the match will be part of the substituion & output.
+
+---
+
+`echo "The quick brown fox jumps over the lazy dog." | sed -n "s|.*\(the .* dog\).*|\1|p"`
+
+Result: `the lazy dog`
+
+---
+
+`echo "The quick brown fox jumps over the lazy dog." | sed -n "s|.*the \(.*\) dog.*|What is the dog? \1|p"`
+
+Result: `What is the dog? lazy`
+
+---
+
+`echo "The quick brown fox jumps over the lazy dog." | sed -n "s|the \(.*\) dog|something else|p"`
+
+Result: `The quick brown fox jumps over something else.`
+
+---
+
+### More Pattern Matching
+
 **Input text**:
 ```
 <HTML>
