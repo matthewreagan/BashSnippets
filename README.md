@@ -650,3 +650,9 @@ else
 	git checkout $branch
 fi
 ```
+
+### Useful Git CLI Utilities
+
+This repo contains a number of useful git commands and utilitiy scripts:
+
+[https://github.com/nvie/git-toolbelt](https://github.com/nvie/git-toolbelt)
