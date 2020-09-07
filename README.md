@@ -190,7 +190,7 @@ for i in `find . -name "IMG_04*.HEIC"`; do sips -s format jpeg -s formatOptions 
 ### String comparison
 
 ```
-if ["$1" == "hi"]; then
+if [ "$1" == "hi" ]; then
   echo "First arg is 'hi'!"
 fi
 ```
