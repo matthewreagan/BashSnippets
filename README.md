@@ -181,9 +181,22 @@ See also: [https://stackoverflow.com/questions/16758525/how-can-i-make-xargs-han
 
 ### Batch-converting images with `sips`
 
+Convert HEIC to JPG (macOS only):
+
 ```
 for i in `find . -name "IMG_04*.HEIC"`; do sips -s format jpeg -s formatOptions 70 "${i}" --out "${i%HEIC}JPG"; done
 ```
+
+### Batch-converting images with `ImageMagick`
+
+```
+# Install ImageMagick (run as root)
+yum install ImageMagick # CentOS
+apt-get install imagemagick # Debian
+# Generate thumbnails
+for i in `find . -name "*.jpg"`; do convert "$i" -resize 128 "${avatar/.jpg/_128.jpg}"; done
+```
+
 
 ## Strings
 
